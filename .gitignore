@@ -1,2 +1,4 @@
-
-*.json
+#ignore json file
+ *.json
+ .vscode
+ /Users/gytis/Desktop/Universitetas/2 Kursas/BlockChain/BlockChain-Pratybos/konstitucija.txt
