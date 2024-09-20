@@ -1,4 +1,5 @@
 #ignore json file
- *.json
- .vscode
- /Users/gytis/Desktop/Universitetas/2 Kursas/BlockChain/BlockChain-Pratybos/konstitucija.txt
+.vscode/launch.json
+.vscode/c_cpp_properties.json
+.vscode/settings.json
+konstitucija.txt
