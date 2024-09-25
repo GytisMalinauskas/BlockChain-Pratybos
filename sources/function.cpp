@@ -8,20 +8,30 @@ string toHexString(const vector<uint8_t>& bytes) {
     return ss.str();
 }
 // Patobulinta maišos funkcija
-vector<uint8_t> simpleHash(const string& input) {
+// Patobulinta maišos funkcija su daugiau maišymo
+vector<uint8_t> betterHash(const string& input) {
     // Fiksuotas išėjimo dydis - 256 bitai arba 32 baitai
     const size_t hashSize = 32;
-    vector<uint8_t> hash(hashSize, 0); // Inicializuojame nulių masyvą
+    vector<uint8_t> hash(hashSize, 0xAA); // Inicializuojame su pradinėmis reikšmėmis
     
-    // Papildomas maišymas su pradine verte
-    uint8_t salt = 0xAB;  // Paprastas "salt", kuris padeda maišyti pradines reikšmes
+    // Pradinė vertė
+    uint8_t salt = 0xAB;
 
     for (size_t i = 0; i < input.length(); ++i) {
-        // Kiekvienas simbolis prisideda prie kiekvieno baito maišos
-        hash[i % hashSize] ^= (input[i] + salt + i * 31); // Naudojame daugiau matematikos, kad įvestis maišytųsi geriau
-        // Daugiau maišymo: paslinkimas ir XOR
-        hash[i % hashSize] = ((hash[i % hashSize] << 5) | (hash[i % hashSize] >> 3)) ^ salt;
-        salt = (salt * 31) + input[i]; // Modifikuojame salt, kad įvestis daugiau maišytųsi
+        // Pirmiausia modifikuojame kiekvieną baitą
+        for (size_t j = 0; j < hashSize; ++j) {
+            // Naudojame XOR su simbolio verte, jo pozicija, salt ir baito pozicija
+            hash[j] ^= (input[i] + salt + i * 31 + j * 17);
+            // Pasukame baitus, kad įtakotume viso masyvo baitus
+            hash[j] = ((hash[j] << 7) | (hash[j] >> 1)) ^ (salt * (i + 1));
+        }
+        salt = (salt * 33) + input[i]; // Modifikuojame salt, kad kiekvienas simbolis įtakotų tolimesnius ciklus
+    }
+
+    // Papildomas maišymas po pagrindinio ciklo
+    for (size_t i = 0; i < hashSize; ++i) {
+        hash[i] ^= (salt + i * 31);  // Dar daugiau chaoso
+        hash[i] = ((hash[i] << 5) | (hash[i] >> 3)) ^ salt;
     }
 
     return hash;
