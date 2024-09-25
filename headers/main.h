@@ -8,6 +8,6 @@
 
 using namespace std;
 string toHexString(const vector<uint8_t>& bytes);
-vector<uint8_t> simpleHash(const string& input);
+vector<uint8_t> betterHash(const string& input);
 
 #endif

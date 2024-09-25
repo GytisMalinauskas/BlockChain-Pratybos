@@ -7,7 +7,6 @@ string toHexString(const vector<uint8_t>& bytes) {
     }
     return ss.str();
 }
-// Patobulinta maišos funkcija
 // Patobulinta maišos funkcija su daugiau maišymo
 vector<uint8_t> betterHash(const string& input) {
     // Fiksuotas išėjimo dydis - 256 bitai arba 32 baitai

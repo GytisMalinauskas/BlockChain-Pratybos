@@ -14,7 +14,7 @@ int main() {
     getline(cin, input);
 
     // Sugeneruojame maišą
-    vector<uint8_t> hashValue = simpleHash(input);
+    vector<uint8_t> hashValue = betterHash(input);
 
     // Konvertuojame maišą į hexadecimal formato eilutę
     string hexHash = toHexString(hashValue);
