@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     }
     if (argc>1)
     {
-      cout<<"[WARNING] Tinka tik failai, kurie baigiasi (.txt)";
+      cout<<"[WARNING] Tinka tik failai, kurie baigiasi (.txt)"<<endl;
       string failas = argv[1], line;
       ifstream fd(failas);
       
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
         // Sugeneruojame maišą
     vector<uint8_t> hashValue = betterHash(in);
     string hexHash = toHexString(hashValue);
-    cout <<in<<" Maišos reikšmė (hash): " << hexHash << endl;
+    cout <<"Maišos reikšmė (hash): " << hexHash << endl;
       }
     }
     return 0;   
