@@ -3,6 +3,8 @@
 .vscode/c_cpp_properties.json
 .vscode/settings.json
 *.json
+
+#ignore text (.txt) and object files (.o)
 *.txt
 *.o
 program
