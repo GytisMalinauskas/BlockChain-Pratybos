@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <sstream>
 #include <vector>
+#include <fstream>
+#include <vector>
 
 using namespace std;
 string toHexString(const vector<uint8_t>& bytes);

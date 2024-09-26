@@ -1,15 +1,11 @@
 #include "../headers/main.h"
 
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <sstream>
-#include <vector>
-
-using namespace std;
-
-int main() {
+int main(int argc, char* argv[]) 
+{
     string input;
+    vector <string> input2;
+    if (argc==1)
+    {
     cout << "Įveskite eilutę: ";
     getline(cin, input);
 
@@ -20,6 +16,28 @@ int main() {
     string hexHash = toHexString(hashValue);
 
     cout << "Maišos reikšmė (hash): " << hexHash << endl;
-
-    return 0;
+    }
+    if (argc>1)
+    {
+      cout<<"[WARNING] Tinka tik failai, kurie baigiasi (.txt)";
+      string failas = argv[1], line;
+      ifstream fd(failas);
+      
+      if(fd.is_open())
+      {
+        while(fd >> line)
+        {
+          input2.push_back(line);
+        }
+        fd.close();
+      }
+      for(const auto& in : input2)
+      {
+        // Sugeneruojame maišą
+    vector<uint8_t> hashValue = betterHash(in);
+    string hexHash = toHexString(hashValue);
+    cout <<in<<" Maišos reikšmė (hash): " << hexHash << endl;
+      }
+    }
+    return 0;   
 }
