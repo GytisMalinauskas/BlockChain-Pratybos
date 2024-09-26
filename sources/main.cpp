@@ -3,8 +3,8 @@
 int main(int argc, char* argv[]) 
 {
     string input;
-    vector <string> input2;
-    vector <string> hash;
+    vector <string> input2, input3;
+    vector <string> hash, hash2;
     if (argc==1)
     {
     cout << "Įveskite eilutę: ";
@@ -21,14 +21,15 @@ int main(int argc, char* argv[])
     if (argc>1)
     {
       cout<<"[WARNING] Tinka tik failai, kurie baigiasi (.txt)"<<endl;
-      string failas = argv[1], line;
+      string failas = argv[1], line,line2;
       ifstream fd(failas);
       
       if(fd.is_open())
       {
-        while(fd >> line)
+        while(fd >> line >> line2)
         {
           input2.push_back(line);
+          input3.push_back(line2);
         }
         fd.close();
       }
@@ -40,7 +41,19 @@ int main(int argc, char* argv[])
     hash.push_back(hexHash);
     
     //cout <<"Maišos reikšmė (hash): " << hexHash << endl;
+      
       }
+      for(const auto& in : input3)
+      {
+        // Sugeneruojame maišą
+    vector<uint8_t> hashValue = betterHash(in);
+    string hexHash = toHexString(hashValue);
+    hash2.push_back(hexHash);
+    
+    //cout <<"Maišos reikšmė (hash): " << hexHash << endl;
+      
+      }
+      /*
       int m=1,k=0;
       for(const auto& h : hash)
       {
@@ -55,6 +68,7 @@ int main(int argc, char* argv[])
         m++;
       }
       cout <<"[INFO] Kolizijų skaičius: "<<k<<endl;
+      */
     }
     return 0;   
 }
