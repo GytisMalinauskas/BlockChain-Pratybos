@@ -29,3 +29,18 @@
 - Failo **randomSymbols.txt** maišos reikšmė (hash) pirmą kartą: `e47cf67a085c72e49accf674e1dceb6285b9654230c40a2502d6ebab82315be3`
 - Failo **randomSymbols.txt** maišos reikšmė (hash) antrą kartą:
 `e47cf67a085c72e49accf674e1dceb6285b9654230c40a2502d6ebab82315be3`
+
+## Kolizijų tyrimas
+- *Tyrimas atliktas su failais, kurie turi po 25000 eilučių ir yra užpildyti po 10, 100, 500, 1000 skirtingų simbolių*
+- *Kolizijų nebuvo aptikta* 
+```
+//Įrodymas
+./program 25k10.txt
+[INFO] Kolizijų skaičius: 0
+./program 25k100.txt
+[INFO] Kolizijų skaičius: 0
+./program 25k1000.txt
+[INFO] Kolizijų skaičius: 0
+./program 25k500.txt 
+[INFO] Kolizijų skaičius: 0
+```
