@@ -10,3 +10,6 @@
 program
 file_generator.cpp
 run
+
+#ignore .ds_store
+.ds_store

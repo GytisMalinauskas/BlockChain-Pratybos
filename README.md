@@ -1,5 +1,5 @@
 # v0.1 hash'o generatorius
-*Čia realizuota pirmoji hash'o generatoriaus versija*
+*Čia realizuota pirmoji hash'o generatoriaus versija*\
 *Realizacija išpildyta tiek su command line argumentu, tiek įvedant ranka*
 
 ## Pseudo-kodas
