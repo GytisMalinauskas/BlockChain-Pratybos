@@ -35,3 +35,29 @@ vector<uint8_t> betterHash(const string& input) {
 
     return hash;
 }
+
+double compareHash(string h1, string h2)
+{
+     if (h1.size() != h2.size()) {
+        std::cerr << "[WARNING] Hash'ai turi būti vienodo ilgio!" << std::endl;
+        return 0.0;
+    }
+     // XOR tarp hash'ų ir skaičiuojame skirtumus
+    int totalBits = 0;
+    int differingBits = 0;
+    for (size_t i = 0; i < h1.size(); ++i) {
+        // Konvertuojame kiekvieną hash'o simbolį į sveikąjį skaičių (nuo hex iki int)
+        int hash1 = std::stoi(std::string(1, h1[i]), nullptr, 16); // Hex -> int
+        int hash2 = std::stoi(h2.substr(i, 1), nullptr, 16); // Hex -> int
+        
+        // XOR tarp dviejų hex simbolių, gauname skirtumus tarp bitų
+        int xorResult = hash1 ^ hash2;
+        
+        // Paverskite XOR rezultatą į bitus ir suskaičiuokite, kiek bitų skiriasi
+        std::bitset<4> bits(xorResult); // Hex skaičiuje yra 4 bitai
+        differingBits += bits.count();  // Suskaičiuojame kiek „1“ bitų
+        totalBits += 4;                 // Kiekvienas hex simbolis yra 4 bitai
+    }
+double percentageDifference = (static_cast<double>(differingBits) / totalBits) * 100.0;
+    return percentageDifference;
+}

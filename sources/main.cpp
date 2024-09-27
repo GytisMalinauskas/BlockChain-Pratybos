@@ -5,6 +5,7 @@ int main(int argc, char* argv[])
     string input;
     vector <string> input2, input3;
     vector <string> hash, hash2;
+    vector <double> proc;
     if (argc==1)
     {
     cout << "Įveskite eilutę: ";
@@ -53,6 +54,32 @@ int main(int argc, char* argv[])
     //cout <<"Maišos reikšmė (hash): " << hexHash << endl;
       
       }
+      for(const auto& h : hash)
+      {
+        int i=0;
+        string hashas=h;
+        string hashas2=hash2[i];
+        proc.push_back(compareHash(hashas,hashas2));
+        i++;
+      }
+      double min=proc[0], sum=0, max=proc[0];
+      for(const auto& p : proc)
+      {
+        if(p<min)
+        {
+          min=p;
+          }
+          if(p>max)
+          {
+            max=p;
+          }
+          sum+=p;
+      }
+      double avg=sum/proc.size();
+      cout << "Min: " << min << endl;
+      cout << "Max: " << max << endl;
+      cout << "Avg: " << avg << endl;
+      
       /*
       int m=1,k=0;
       for(const auto& h : hash)
