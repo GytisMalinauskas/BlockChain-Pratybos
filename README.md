@@ -51,3 +51,4 @@
 | Minimalus proc. | 35.16 | 37.11 | 37.5 | 37.5 |
 | Maximalus proc. | 62.5 | 62.11 | 62.89 | 62.89 |
 | Vidutinis proc. | 50 | 50 | 49.99 | 50 |
+.
