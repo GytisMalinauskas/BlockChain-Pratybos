@@ -46,10 +46,14 @@
 ```
 ## Procentinis skirtingumas
 
-  - *Tyrimas atliktas su failais, kurie turi po 25000 eilučių ir yra užpildyti po 10, 100, 500, 1000 skirtingų simbolių*\
+  - *Tyrimas atliktas su failais, kurie turi po 25000 eilučių ir yra užpildyti po 10, 100, 500, 1000 skirtingų simbolių*
 
 | Failai | `25k10.txt` | `25k100.txt` | `25k500.txt` | `25k1000.txt` |
 |:-------------------:|:------------:|:-------------:|:------------:|:------------:|
 | Minimalus proc. | 35.16 | 37.11 | 37.5 | 37.5 |
 | Maximalus proc. | 62.5 | 62.11 | 62.89 | 62.89 |
 | Vidutinis proc. | 50 | 50 | 49.99 | 50 |
+
+## Išvados
+
+  + *Ši maišos funkcija atitinka visus reikalavimus, tačiau galima teigti, jog funkcija trūkumų gali turėti kalbant apie efektyvumą.*
