@@ -5,7 +5,51 @@
 ## Pseudo-kodas
   - *Maišos funkcijos idėja*
 ```
-//kodas
+1. Start
+
+2. Define a function `toHexString(bytes)`:
+    - Input: `bytes` (vector of uint8_t)
+    - Convert each byte to its hexadecimal representation
+    - Return the resulting hex string
+
+3. Define a function `betterHash(input)`:
+    - Input: `input` (string)
+    - Initialize a 32-byte vector with preset values
+    - Initialize `salt` variable
+    - Loop over each character in `input`:
+        - For each byte in the hash vector:
+            - Perform XOR operations between the current byte, the input character, and the salt
+            - Rotate bits in the byte
+            - Modify the salt based on the current input character
+    - Apply additional bit rotations and XOR for extra mixing
+    - Return the final hash vector (32 bytes)
+
+4. Define a function `compareHash(h1, h2)`:
+    - Input: Two hex strings `h1` and `h2`
+    - Ensure both hashes are of the same length
+    - Loop over each character in the hashes:
+        - Convert each character from hex to int
+        - Perform XOR between the two characters and count differing bits
+    - Calculate the percentage of differing bits between the hashes
+    - Return the percentage difference
+
+5. Main program:
+    - If no arguments are provided:
+        - Prompt the user for input
+        - Generate the hash of the input using `betterHash`
+        - Convert the hash to hex using `toHexString`
+        - Output the resulting hash
+    - If a file is provided as an argument:
+        - Ensure the file ends with `.txt`
+        - Read the file, extracting pairs of input strings
+        - For each input pair:
+            - Generate the hash for each input using `betterHash`
+            - Compare the two hashes using `compareHash`
+            - Record the percentage differences
+        - Calculate and output the minimum, maximum, and average percentage differences
+
+6. End
+
 ```
 
 # Eksperimentinis tyrimas ir rezultatų analizė
@@ -56,4 +100,4 @@
 
 ## Išvados
 
-  + *Ši maišos funkcija atitinka visus reikalavimus, tačiau galima teigti, jog funkcija trūkumų gali turėti kalbant apie efektyvumą.*
+  + *Ši maišos funkcija atitinka visus reikalavimus, tačiau galima teigti, jog funkcija trūkumų gali turėti kalbant apie jos efektyvumą.*
