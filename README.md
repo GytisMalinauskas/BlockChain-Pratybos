@@ -74,6 +74,17 @@
 - Failo **randomSymbols.txt** maišos reikšmė (hash) antrą kartą:
 `e47cf67a085c72e49accf674e1dceb6285b9654230c40a2502d6ebab82315be3`
 
+## Maišos funkcijos efektyvumo tyrimas
+- *Tyrimas atliktas su failu **`konstitucija1.txt`**, skaitant po n eilučiu ir matuojant maišos spartos priklausomumą nuo įvedimo (input) dydžio*
+
+| n | `2` | `4` | `8` | `16` | `32` |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| Trukmė (sekundėmis) | 0.000103 | 0.000127 | 0.0002 | 0.000565 | 0.000939 |
+
+| n | `64` | `128` | `256` | `512` | `789 (eof)` |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| Trukmė (sekundėmis) | 0.001898 | 0.004542 | 0.008992 | 0.019052 | 0.029194 |
+
 ## Kolizijų tyrimas
 - *Tyrimas atliktas su failais, kurie turi po 25000 eilučių ir yra užpildyti po 10, 100, 500, 1000 skirtingų simbolių*
 - *Kolizijų nebuvo aptikta* 

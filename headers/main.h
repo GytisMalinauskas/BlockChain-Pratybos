@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <bitset>
+#include <chrono>
 
 using namespace std;
 string toHexString(const vector<uint8_t>& bytes);

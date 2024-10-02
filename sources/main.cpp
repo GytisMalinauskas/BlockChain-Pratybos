@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
     vector <double> proc;
     if (argc==1)
     {
-    cout << "Įveskite eilutę: ";
+    cout << "[INPUT] Įveskite eilutę: ";
     getline(cin, input);
 
     // Sugeneruojame maišą
@@ -17,10 +17,43 @@ int main(int argc, char* argv[])
     // Konvertuojame maišą į hexadecimal formato eilutę
     string hexHash = toHexString(hashValue);
 
-    cout << "Maišos reikšmė (hash): " << hexHash << endl;
+    cout << "[OUTPUT] Maišos reikšmė (hash): " << hexHash << endl;
     }
     if (argc>1)
     {
+      cout<<"[INFO] Tinka tik failai, kurie baigiasi (.txt)"<<endl;
+      string failas = argv[1], line;
+      ifstream fd(failas);
+      int n;
+      cout<<"[INPUT] Iveskite eiluciu skaiciu: ";
+      cin>>n;
+      if(fd.is_open())
+      {
+        for(int i=0; i<n; i++)
+        {
+          getline(fd,line);
+          input2.push_back(line);
+        }
+        fd.close();
+      }
+      else
+      {
+        cout<<"[ERROR] Failas nerastas"<<endl;
+        return 1;
+      }
+      string sum;
+      for(const auto& in : input2)
+      {
+        sum+=in;
+      }
+    auto startPoint = chrono::high_resolution_clock::now();
+    vector<uint8_t> hashValue = betterHash(sum);
+    string hexHash = toHexString(hashValue);
+    auto endPoint = chrono::high_resolution_clock::now();
+    auto procedureTime = chrono::duration_cast<chrono::microseconds>(endPoint - startPoint).count();
+    cout<<"[INFO] Maišos funkcijos veikimo trukmė: " << procedureTime/1000000.0<< " sekundes"<<endl;
+    cout <<"[OUTPUT] Maišos reikšmė (hash): " << hexHash << endl;
+      /*
       cout<<"[WARNING] Tinka tik failai, kurie baigiasi (.txt)"<<endl;
       string failas = argv[1], line,line2;
       ifstream fd(failas);
@@ -79,7 +112,7 @@ int main(int argc, char* argv[])
       cout << "Min: " << min << endl;
       cout << "Max: " << max << endl;
       cout << "Avg: " << avg << endl;
-      
+      */
       /*
       int m=1,k=0;
       for(const auto& h : hash)
@@ -97,5 +130,6 @@ int main(int argc, char* argv[])
       cout <<"[INFO] Kolizijų skaičius: "<<k<<endl;
       */
     }
-    return 0;   
+    cout<<"[INFO] programos veikimo pabaiga"<<endl; 
+    return 0;
 }
